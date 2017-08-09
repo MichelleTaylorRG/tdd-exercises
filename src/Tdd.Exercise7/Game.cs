@@ -14,15 +14,9 @@ namespace Tdd.Exercise7
 
         public GameResult Play(IPlayer player1, IPlayer player2)
         {
-            var wins = new Dictionary<IPlayer, int>
-            {
-                {player1, 0},
-                {player2, 0},
-            };
-
             var roundCount = 0;
 
-            while (roundCount < 3 || wins.Values.Distinct().Count() == 1)
+            while (roundCount < 3 || (player1.Wins == player2.Wins))
             {
                 roundCount++;
 
@@ -30,15 +24,15 @@ namespace Tdd.Exercise7
                 switch (winner)
                 {
                     case Winner.Player1:
-                        wins[player1]++;
+                        player1.Wins++;
                         break;
                     case Winner.Player2:
-                        wins[player2]++;
+                        player2.Wins++;
                         break;
                 }
             }
 
-            var winningPlayer = wins.OrderByDescending(pair => pair.Value).First().Key;
+            var winningPlayer = player1.Wins > player2.Wins ? player1 : player2;
 
             return new GameResult(roundCount, winningPlayer);
         }

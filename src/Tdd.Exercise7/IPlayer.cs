@@ -3,5 +3,6 @@
     public interface IPlayer
     {
         Hand RevealHand();
+        int Wins { get; set; }
     }
 }
