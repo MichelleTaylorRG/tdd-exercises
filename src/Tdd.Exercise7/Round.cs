@@ -10,22 +10,31 @@
             switch (hand1)
             {
                 case Hand.Paper:
-                    if (hand2 == Hand.Scissors)
-                        return Winner.Player2;
-                    else if (hand2 == Hand.Rock)
-                        return Winner.Player1;
+                    switch (hand2)
+                    {
+                        case Hand.Scissors:
+                            return Winner.Player2;
+                        case Hand.Rock:
+                            return Winner.Player1;
+                    }
                     break;
                 case Hand.Rock:
-                    if (hand2 == Hand.Paper)
-                        return Winner.Player2;
-                    else if (hand2 == Hand.Scissors)
-                        return Winner.Player1;
+                    switch (hand2)
+                    {
+                        case Hand.Paper:
+                            return Winner.Player2;
+                        case Hand.Scissors:
+                            return Winner.Player1;
+                    }
                     break;
                 case Hand.Scissors:
-                    if (hand2 == Hand.Rock)
-                        return Winner.Player2;
-                    else if (hand2 == Hand.Paper)
-                        return Winner.Player1;
+                    switch (hand2)
+                    {
+                        case Hand.Rock:
+                            return Winner.Player2;
+                        case Hand.Paper:
+                            return Winner.Player1;
+                    }
                     break;
             }
 
