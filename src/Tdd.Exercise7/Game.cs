@@ -20,20 +20,25 @@ namespace Tdd.Exercise7
                 {player2, 0},
             };
 
-            int roundCount = 0;
+            var roundCount = 0;
 
             while (roundCount < 3 || wins.Values.Distinct().Count() == 1)
             {
                 roundCount++;
 
                 var winner = _round.Play(player1, player2);
-                if (winner == Winner.Player1)
-                    wins[player1]++;
-                else if (winner == Winner.Player2)
-                    wins[player2]++;
+                switch (winner)
+                {
+                    case Winner.Player1:
+                        wins[player1]++;
+                        break;
+                    case Winner.Player2:
+                        wins[player2]++;
+                        break;
+                }
             }
 
-            IPlayer winningPlayer = wins.OrderByDescending(pair => pair.Value).First().Key;
+            var winningPlayer = wins.OrderByDescending(pair => pair.Value).First().Key;
 
             return new GameResult(roundCount, winningPlayer);
         }
